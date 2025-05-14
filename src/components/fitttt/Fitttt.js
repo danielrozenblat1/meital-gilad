@@ -21,7 +21,8 @@ const CourseSuitability = () => {
   ];
 
   return <>
-    <div className={styles.title}>שנייה לפני שאנחנו מדברות..</div>
+    <div className={styles.title}>ושנייה לפני שאנחנו מדברות..</div>
+ 
     <div className={styles.suitabilityContainer}>
       <div className={styles.suitabilityBox}>
         <h2 className={styles.suitabilityTitle}>
