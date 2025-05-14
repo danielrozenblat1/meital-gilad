@@ -1,0 +1,114 @@
+.center {
+  display: flex;
+  justify-content: center;
+  margin: 3% auto;
+}
+
+.button {
+  position: relative;
+  /* גרדיאנט בגווני ורוד-שמנת עדינים ובוהקים */
+  background: linear-gradient(135deg, #fff0f5 0%, #ffefef 50%, #ffeaf5 100%);
+  border: 1px solid rgba(255, 192, 203, 0.4);  /* בורדר ורדרד עדין */
+  color: #8e5c6e;  /* צבע טקסט ורוד כהה יותר לקריאות משופרת */
+  padding: 16px 36px;
+  font-size: 1.15rem;
+  font-family: "AssistantR", sans-serif;
+  direction: rtl;
+  border-radius: 1.2rem;  /* פינות עגולות ורכות */
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.35s ease;
+  box-shadow: 
+    0 8px 16px rgba(255, 182, 193, 0.15),  /* הפחתת צל חיצוני */
+    0 4px 8px rgba(255, 182, 193, 0.1),
+    inset 0 0 10px rgba(255, 192, 203, 0.15),  /* הפחתת צל פנימי */
+    inset 0 1px 3px rgba(255, 192, 203, 0.1),
+    inset 0 -2px 3px rgba(255, 255, 255, 0.8);
+  letter-spacing: 0.5px;  /* ריווח אותיות קל */
+  text-shadow: 0px 1px 1px rgba(255, 255, 255, 0.8);  /* צל טקסט עדין */
+}
+
+.button:hover {
+  transform: translateY(-2px);  /* תזוזה קלה למעלה בהובר */
+  background: linear-gradient(135deg, #ffeaf5 0%, #ffefef 50%, #fff6fa 100%);  /* גרדיאנט מעט בהיר יותר */
+  box-shadow: 
+    0 10px 20px rgba(255, 182, 193, 0.2),  /* הפחתת צל בהובר */
+    0 6px 10px rgba(255, 182, 193, 0.1),
+    inset 0 0 12px rgba(255, 192, 203, 0.18),
+    inset 0 1px 4px rgba(255, 192, 203, 0.15),
+    inset 0 -2px 4px rgba(255, 255, 255, 0.9);
+}
+
+.button:active {
+  transform: translateY(1px);
+  box-shadow: 
+    0 4px 8px rgba(255, 182, 193, 0.15),
+    0 2px 4px rgba(255, 182, 193, 0.1),
+    inset 0 0 16px rgba(255, 192, 203, 0.25),
+    inset 0 2px 5px rgba(255, 192, 203, 0.2);
+}
+
+/* שיפור אנימציית הברק */
+.shine {
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    45deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0) 20%,
+    rgba(255, 240, 255, 0.5) 45%,  /* ברק בגוון ורדרד, הפחתת עוצמה */
+    rgba(255, 230, 250, 0.5) 50%,
+    rgba(255, 255, 255, 0) 80%,
+    transparent 100%
+  );
+  filter: blur(3px);  /* אפקט טשטוש עדין לברק */
+  transform: rotate(25deg);
+  animation: shine 10s infinite linear;
+  pointer-events: none;
+}
+
+/* הוספת אפקט נוסף: נצנוץ עדין בשוליים */
+.button::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 1.2rem;
+  border: 2px solid transparent;
+  background: linear-gradient(135deg, rgba(255, 192, 203, 0), rgba(255, 192, 203, 0.3)) border-box;  /* הפחתת האטימות */
+  -webkit-mask: 
+    linear-gradient(#fff 0 0) padding-box, 
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: destination-out;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.button:hover::after {
+  opacity: 1;
+  animation: borderGlow 3s infinite alternate;
+}
+
+@keyframes shine {
+  0% {
+    transform: translate(-100%, -100%) rotate(25deg);
+  }
+  100% {
+    transform: translate(100%, 100%) rotate(25deg);
+  }
+}
+
+@keyframes borderGlow {
+  0%, 100% {
+    border-color: rgba(255, 192, 203, 0.3);  /* הפחתת עוצמת הנצנוץ */
+  }
+  50% {
+    border-color: rgba(255, 182, 193, 0.6);  /* הפחתת עוצמת הנצנוץ */
+  }
+}

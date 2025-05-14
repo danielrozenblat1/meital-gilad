@@ -1,0 +1,143 @@
+.NewBox {
+  width: 400px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  margin: 15px auto;
+  box-shadow: 0 4px 20px rgba(248, 210, 201, 0.15),
+              0 8px 32px rgba(248, 210, 201, 0.1);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  padding: 20px;
+  background: linear-gradient(135deg, 
+      rgba(255, 255, 255, 0.98),
+      rgba(252, 243, 240, 0.95),
+      rgba(248, 210, 201, 0.85));
+  border-radius: 16px 24px 16px 24px;
+  position: relative;
+  border: 1px solid rgba(248, 210, 201, 0.2);
+  backdrop-filter: blur(5px);
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;  /* Keeps vertical alignment */
+  justify-content: space-between; /* Changed to space between for icon left, title right */
+  margin-bottom: 10px;
+  padding-right: 5%; /* Maintains the right padding */
+  padding-left: 5%; /* Added left padding for balance */
+}
+
+.description {
+  font-size: 1.1rem;
+  font-family: "AssistantR", Arial, sans-serif;
+  text-align: right;
+  margin: 3% 0;
+  direction: rtl;
+  width: 90%;
+  color: #444; /* Kept black/dark gray color as requested */
+  line-height: 1.6;
+  transition: transform 0.3s ease;
+}
+
+.title {
+  font-size: 1.5rem;
+  font-family: "Assistant", Arial, sans-serif;
+  text-align: right;
+  padding-right: 15px;
+  direction: rtl;
+  width: 100%;
+  font-weight: 800;
+  color: #2d2d3d; /* Kept black/dark blue color as requested */
+  text-shadow: 1px 1px 1px rgba(248, 210, 201, 0.25);
+}
+
+.icon {
+  display: flex;
+  width: 30%;
+  justify-content: flex-start; /* Changed to align icon to the left */
+  margin-left: 0;
+  margin-right: 0;
+  transition: transform 0.3s ease;
+  order: -1; /* Added to ensure the icon appears first in the row */
+}
+
+.NewBox:hover {
+  box-shadow: 0 8px 32px rgba(248, 210, 201, 0.2),
+              0 16px 48px rgba(248, 210, 201, 0.15);
+  transform: translateY(-2px);
+  border-color: rgba(248, 210, 201, 0.3);
+}
+
+.NewBox:hover .icon {
+  transform: scale(1.05);
+}
+
+.NewBox:hover .description {
+  transform: translateX(-5px);
+}
+
+@media only screen and (max-width: 350px) {
+  .NewBox {
+      width: 270px;
+      max-width: 320px;
+      padding: 15px;
+  }
+  
+  .description {
+      font-size: 0.9rem;
+      width: 100%;
+  }
+  
+  .title {
+      font-size: 1.3rem;
+  }
+  
+  .icon {
+      width: 25%;
+  }
+  
+  .row {
+      padding-left: 2%;
+      padding-right: 2%;
+  }
+}
+
+@media only screen and (min-width: 351px) and (max-width: 450px) {
+  .NewBox {
+      width: 290px;
+      padding: 18px;
+  }
+  
+  .description {
+      font-size: 1rem;
+      width: 95%;
+  }
+  
+  .title {
+      font-size: 1.4rem;
+  }
+  
+  .icon {
+      width: 28%;
+  }
+}
+
+@media only screen and (min-width: 451px) and (max-width: 550px) {
+  .NewBox {
+      width: 360px;
+  }
+  
+  .description {
+      font-size: 1.05rem;
+      width: 90%;
+  }
+  
+  .title {
+      font-size: 1.5rem;
+  }
+  
+  .icon {
+      width: 30%;
+  }
+}

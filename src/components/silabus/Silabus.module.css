@@ -1,0 +1,584 @@
+/* CourseAccordion.module.css */
+/* Custom properties for consistent styling with pink and cream theme - more minimalist */
+:root {
+  --primary-color: #e2a1af;
+  --primary-light: #f8e9e6;
+  --primary-dark: #c68599;
+  --text-primary: #442a32;
+  --text-secondary: #704b57;
+  --background-white: #ffffff;
+  --glass-background: rgba(255, 255, 255, 0.65);
+  --border-radius: 0.75rem;
+  --box-shadow: 0 4px 10px -2px rgba(226, 161, 175, 0.15);
+  --glass-shadow: 0 4px 16px rgba(226, 161, 175, 0.1);
+  --transition-speed: 0.3s;
+  --content-transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  --amatic-font: 'Assistant', sans-serif;
+  --assistant-font: 'AssistantR', sans-serif;
+  --glass-border: 1px solid rgba(255, 255, 255, 0.3);
+  --glass-gradient: linear-gradient(135deg, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.1));
+}
+
+/* Course container */
+.courseContainer {
+  max-width: 50rem;
+  margin: 0 auto;
+  padding: 2rem;
+  direction: rtl;
+}
+
+/* Individual course wrapper */
+.courseWrapper {
+  margin-bottom: 1.75rem;
+  transform-style: preserve-3d;
+  perspective: 800px;
+}
+
+/* Course header button - the clickable area with glass effect */
+.courseButton {
+  width: 100%;
+  padding: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: var(--border-radius);
+  background: var(--glass-background);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow: var(--box-shadow);
+  border: var(--glass-border);
+  cursor: pointer;
+  position: relative;
+  text-align: right;
+  transition: all var(--transition-speed) cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+}
+
+/* Hover effect for course button */
+.courseButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px -4px rgba(226, 161, 175, 0.2);
+}
+
+/* Active state for course button */
+.courseButton.active {
+  background: rgba(255, 255, 255, 0.75);
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  border-bottom: none;
+}
+
+/* Course title container with icon */
+.titleContainer {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+/* Title content container (title + duration) */
+.titleContent {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+/* Course duration */
+.courseDuration {
+  font-family: var(--assistant-font);
+  font-size: 1rem; /* מוגדל מ-0.9rem */
+  color: var(--primary-dark);
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Icon wrapper */
+.iconWrapper {
+  padding: 0.7rem;
+  border-radius: 9999px;
+  background: rgba(226, 161, 175, 0.15);
+  border: 1px solid rgba(226, 161, 175, 0.25);
+  box-shadow: 0 2px 6px -2px rgba(226, 161, 175, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-speed) ease;
+}
+
+/* Icon styling */
+.icon {
+  width: 1.6rem;
+  height: 1.6rem;
+  color: var(--primary-dark);
+  transition: transform 0.4s ease;
+}
+
+/* Course button hover effect on icon */
+.courseButton:hover .iconWrapper {
+  background: rgba(226, 161, 175, 0.2);
+}
+
+.courseButton:hover .icon {
+  transform: scale(1.1);
+}
+
+/* Course title */
+.courseTitle {
+  font-family: var(--amatic-font);
+  font-size: 1.5rem;
+  color: var(--text-primary);
+  font-weight: 700;
+  margin: 0;
+}
+
+/* Toggle icon (chevron) */
+.toggleIcon {
+  width: 1.25rem;
+  height: 1.25rem;
+  color: var(--primary-color);
+  transition: transform var(--transition-speed) cubic-bezier(0.4, 0, 0.2, 1);
+  stroke-width: 2;
+}
+
+/* Rotation for toggle icon when active */
+.toggleIcon.active {
+  transform: rotate(180deg);
+  color: var(--primary-dark);
+}
+
+/* Content wrapper for animation */
+.contentWrapper {
+  overflow: hidden;
+  max-height: 0;
+  transition: var(--content-transition);
+  border-radius: 0 0 var(--border-radius) var(--border-radius);
+  background: var(--glass-background);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: var(--glass-border);
+  border-top: none;
+  box-shadow: var(--box-shadow);
+  margin-top: -1px;
+  z-index: -1;
+  position: relative;
+}
+
+/* Active state for content wrapper */
+.contentWrapper.open {
+  max-height: 5000px; /* Large value to accommodate any content */
+}
+
+/* Content area */
+.content {
+  padding: 2rem;
+  text-align: right;
+}
+
+/* Course content */
+.courseContent {
+  font-family: var(--assistant-font);
+  font-weight: 300;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  font-size: 1.15rem; /* מוגדל מ-1.05rem */
+}
+
+.courseContent p {
+  margin-top: 0;
+  margin-bottom: 1.75rem;
+}
+
+/* Method box - minimal glass effect */
+.methodBox {
+  background: rgba(248, 233, 230, 0.6);
+  padding: 2rem;
+  border-radius: 0.75rem;
+  position: relative;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 4px 16px -8px rgba(226, 161, 175, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  transition: all 0.3s ease;
+  margin-top: 1.25rem;
+  margin-bottom: 2rem;
+}
+
+/* Method title */
+.methodTitle {
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 1.5rem;
+  font-size: 2rem; /* מוקטן מ-2.25rem */
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-family: var(--amatic-font);
+  position: relative;
+}
+
+/* Method title icon */
+.methodTitleIcon {
+  color: var(--primary-dark);
+  width: 1.75rem;
+  height: 1.75rem;
+  opacity: 0.9;
+}
+
+/* Method list */
+.methodList {
+  list-style-type: none;
+  color: var(--text-secondary);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding-right: 0; /* בוטל padding */
+  position: relative;
+  margin: 0;
+  padding-bottom: 0.5rem;
+  width: 100%; /* הרחבת הקונטיינר */
+}
+
+/* List items with icon */
+.methodItem {
+  position: relative;
+  padding-right: 0; /* בוטל padding */
+  display: flex;
+  align-items: center;
+  gap: 1.2rem; /* מוגדל מ-1rem */
+  transition: all 0.3s ease;
+  opacity: 0;
+  animation: fadeInUp 0.5s ease forwards;
+  animation-delay: calc(var(--li-index, 0) * 0.05s + 0.1s);
+  font-size: 1.15rem; /* מוגדל מ-1.05rem */
+  width: 100%; /* הרחבת הפריט */
+}
+
+/* Method icon */
+.methodIcon {
+  color: var(--primary-dark);
+  background: rgba(248, 233, 230, 0.7);
+  border-radius: 50%;
+  width: 30px; /* מוגדל מ-28px */
+  height: 30px; /* מוגדל מ-28px */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 6px -2px rgba(226, 161, 175, 0.2);
+  flex-shrink: 0;
+  transition: all 0.3s ease;
+}
+
+/* Hover effect for list items */
+.methodItem:hover {
+  transform: translateX(-2px);
+  color: var(--primary-dark);
+}
+
+.methodItem:hover .methodIcon {
+  background: rgba(226, 161, 175, 0.15);
+  transform: scale(1.05);
+}
+
+/* WhatsApp button container */
+.buttonContainer {
+  display: flex;
+  justify-content: center;
+  margin-top: 1.5rem;
+}
+
+/* WhatsApp button styling */
+.whatsappButton {
+  font-size: 1.1rem; /* מוגדל מ-1rem */
+  padding: 0.7rem 1.75rem;
+}
+
+/* מדיה קווריז לפי גדלים שונים */
+
+/* מתחת ל-350px */
+@media screen and (max-width: 349px) {
+  .courseContainer {
+    padding: 1rem;
+  }
+  
+  .courseButton {
+    padding: 1rem;
+  }
+  
+  .titleContainer {
+    gap: 0.75rem;
+  }
+  
+  .courseTitle {
+    font-size: 1.1rem;
+  }
+  
+  .iconWrapper {
+    padding: 0.5rem;
+  }
+  
+  .icon {
+    width: 1.2rem;
+    height: 1.2rem;
+  }
+  
+  .courseDuration {
+    font-size: 0.85rem; /* מוגדל מ-0.75rem */
+  }
+  
+  .toggleIcon {
+    width: 1rem;
+    height: 1rem;
+  }
+  
+  .content {
+    padding: 1rem;
+  }
+  
+  .courseContent {
+    font-size: 1rem; /* מוגדל מ-0.9rem */
+  }
+  
+  .methodBox {
+    padding: 1.25rem;
+  }
+  
+  .methodTitle {
+    font-size: 1.4rem; /* מוקטן עוד יותר */
+    margin-bottom: 1rem;
+  }
+  
+  .methodItem {
+    font-size: 1rem; /* מוגדל מ-0.9rem */
+    gap: 0.85rem; /* מוגדל מ-0.75rem */
+  }
+  
+  .methodIcon {
+    width: 26px; /* מוגדל מ-24px */
+    height: 26px; /* מוגדל מ-24px */
+  }
+  
+  .whatsappButton {
+    font-size: 0.95rem; /* מוגדל מ-0.85rem */
+    padding: 0.6rem 1.25rem;
+  }
+}
+
+/* 350px-450px */
+@media screen and (min-width: 350px) and (max-width: 450px) {
+  .courseContainer {
+    padding: 1.25rem;
+  }
+  
+  .courseButton {
+    padding: 1.1rem;
+  }
+  
+  .courseTitle {
+    font-size: 1.2rem;
+  }
+  
+  .iconWrapper {
+    padding: 0.55rem;
+  }
+  
+  .icon {
+    width: 1.3rem;
+    height: 1.3rem;
+  }
+  
+  .courseDuration {
+    font-size: 0.9rem; /* מוגדל מ-0.8rem */
+  }
+  
+  .content {
+    padding: 1.25rem;
+  }
+  
+  .courseContent {
+    font-size: 1.05rem; /* מוגדל מ-0.95rem */
+  }
+  
+  .methodBox {
+    padding: 1.5rem;
+  }
+  
+  .methodTitle {
+    font-size: 1.5rem; /* מוקטן עוד יותר */
+  }
+  
+  .methodItem {
+    font-size: 1.05rem; /* מוגדל מ-0.95rem */
+  }
+}
+
+/* 450px-550px */
+@media screen and (min-width: 451px) and (max-width: 550px) {
+  .courseContainer {
+    padding: 1.5rem;
+  }
+  
+  .courseButton {
+    padding: 1.2rem;
+  }
+  
+  .courseTitle {
+    font-size: 1.3rem;
+  }
+  
+  .iconWrapper {
+    padding: 0.6rem;
+  }
+  
+  .icon {
+    width: 1.4rem;
+    height: 1.4rem;
+  }
+  
+  .content {
+    padding: 1.5rem;
+  }
+  
+  .courseContent {
+    font-size: 1.1rem; /* מוגדל מ-1rem */
+  }
+  
+  .methodBox {
+    padding: 1.75rem;
+  }
+  
+  .methodTitle {
+    font-size: 1.65rem; /* מוקטן עוד יותר */
+  }
+}
+
+/* 550px-650px */
+@media screen and (min-width: 551px) and (max-width: 650px) {
+  .courseContainer {
+    padding: 1.6rem;
+  }
+  
+  .courseButton {
+    padding: 1.3rem;
+  }
+  
+  .courseTitle {
+    font-size: 1.35rem;
+  }
+  
+  .content {
+    padding: 1.6rem;
+  }
+  
+  .methodBox {
+    padding: 1.8rem;
+  }
+  
+  .methodTitle {
+    font-size: 1.75rem; /* מוקטן עוד יותר */
+  }
+}
+
+/* 650px-750px */
+@media screen and (min-width: 651px) and (max-width: 750px) {
+  .courseContainer {
+    padding: 1.7rem;
+  }
+  
+  .courseButton {
+    padding: 1.35rem;
+  }
+  
+  .courseTitle {
+    font-size: 1.4rem;
+  }
+  
+  .content {
+    padding: 1.7rem;
+  }
+  
+  .methodBox {
+    padding: 1.85rem;
+  }
+}
+
+/* 750px-850px */
+@media screen and (min-width: 751px) and (max-width: 850px) {
+  .courseContainer {
+    padding: 1.8rem;
+  }
+  
+  .courseButton {
+    padding: 1.4rem;
+  }
+  
+  .courseTitle {
+    font-size: 1.45rem;
+  }
+  
+  .content {
+    padding: 1.8rem;
+  }
+  
+  .methodBox {
+    padding: 1.9rem;
+  }
+}
+
+/* 850px-950px */
+@media screen and (min-width: 851px) and (max-width: 950px) {
+  .courseContainer {
+    padding: 1.85rem;
+  }
+  
+  .courseButton {
+    padding: 1.45rem;
+  }
+  
+  .content {
+    padding: 1.85rem;
+  }
+  
+  .methodBox {
+    padding: 1.95rem;
+  }
+}
+
+/* 950px-1050px */
+@media screen and (min-width: 951px) and (max-width: 1050px) {
+  .courseContainer {
+    padding: 1.9rem;
+  }
+  
+  .content {
+    padding: 1.9rem;
+  }
+}
+
+/* 1050px-1150px */
+@media screen and (min-width: 1051px) and (max-width: 1150px) {
+  .courseContainer {
+    padding: 1.95rem;
+  }
+  
+  .content {
+    padding: 1.95rem;
+  }
+}
+
+/* 1150px-1250px */
+@media screen and (min-width: 1151px) and (max-width: 1250px) {
+  /* ללא שינויים מיוחדים - הגדלים הכי קרובים למקור */
+}
+
+/* Animation for fade-in list items */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
