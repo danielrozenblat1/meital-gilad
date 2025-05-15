@@ -45,7 +45,7 @@ const Works = () => {
 
   return (
     <>
-      <div className={styles.title}>בשנים האחרונות עברו דרכי אלפי נשים</div>
+      <div className={styles.title}>עברו דרכי אלפי נשים</div>
 
       <div className={styles.container}>
         <div className={styles.scrollTrack}>
