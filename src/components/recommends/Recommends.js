@@ -8,11 +8,13 @@ import 'slick-carousel/slick/slick-theme.css';
 // Import your images
 import result1 from "../../images/מיטל גלעד המלצות 1.png";
 import result2 from "../../images/מיטל גלעד המלצות 2.png";
-
+import result3 from "../../images/מיטל גלעד המלצות 3.png";
+import result4 from "../../images/מיטל גלעד המלצות 4.png";
+import result5 from "../../images/מיטל גלעד המלצות 5.png";
 
 const Recommendations = () => {
   const images = [
-    result1, result2
+    result1, result2,result3,result4,,result5
   ];
 
   const sliderSettings = {
