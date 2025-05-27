@@ -56,12 +56,12 @@
 }
 
 .centerImage {
-  background-image: url("../images/מיטל גלעד תמונה ראשית.png");
+  background-image: url("../images/מיטל גלעד תמונה במרכז.png");
 }
 
 .contentBox {
   position: absolute;
-  bottom: 5%;
+  bottom: 0;
   text-align: center;
   padding: 2.5rem 2rem 2rem;
   width: 85%;
@@ -247,11 +247,11 @@
 @media (min-width: 550px) {
   .leftImage {
     display: block;
-    background-image: url("../images/מיטל גלעד תמונה ימנית.png");
+    background-image: url("../images/רקע תמונות ימין שמאל.jpeg");
   }
   .rightImage {
     display: block;
-    background-image: url("../images/מיטל גלעד תמונה ימנית.png");
+    background-image: url("../images/רקע תמונות ימין שמאל.jpeg");
   }
   .contentBox {
     padding: 2.2rem 2rem 2rem;

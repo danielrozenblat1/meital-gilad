@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './Me.module.css';
-import meital from "../../images/מיטל גלעד תמונה ראשית.png";
+import meital from "../../images/מיטל גלעד תמונת תדמית.png";
 import Works from '../recommends/Works';
 import Recommendations from '../recommends/Recommends';
 
