@@ -61,7 +61,7 @@
 
 .contentBox {
   position: absolute;
-  bottom: 0;
+  bottom: 2%;
   text-align: center;
   padding: 2.5rem 2rem 2rem;
   width: 85%;
@@ -247,11 +247,11 @@
 @media (min-width: 550px) {
   .leftImage {
     display: block;
-    background-image: url("../images/רקע תמונות ימין שמאל.jpeg");
+    background-image: url("../images/רקע תמונות ימין שמאל.png");
   }
   .rightImage {
     display: block;
-    background-image: url("../images/רקע תמונות ימין שמאל.jpeg");
+    background-image: url("../images/רקע תמונות ימין שמאל.png");
   }
   .contentBox {
     padding: 2.2rem 2rem 2rem;
